@@ -23,7 +23,7 @@ function TodoList(){
     <h2>To Do List</h2>
     <NewTodoForm addTask={addTask} />
     <div>
-    {tasks.map(({id, name}) => <Todo name={name} key={id} remove={remove} />)}
+    {tasks.map(({id, name}) => <Todo name={name} key={id} id={id} remove={remove} />)}
     </div>
   </div>) 
 }
