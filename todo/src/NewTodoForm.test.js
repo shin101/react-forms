@@ -13,13 +13,13 @@ it("matches snapshot", function (){
   expect(asFragment()).toMatchSnapshot();
 })
 
-// it("should add a new task", function(){
-//   const {getByLabelText} = render(<NewTodoForm />);
-//   const input = getByLabelText("Tasks"); // if this doesnt work replace name with tasks 
-//   const btn = queryByText("Add Task");
-//   fireEvent.change(input, {target: { value: 'go to the dentist'}});
-//   fireEvent.click(btn);
-//   expect(queryByText('go to the dentist')).toBeInTheDocument();
+it("submits new task correctly", function (){
+  const mockAddTask = jest.fn();
+  const { queryByText } = render(<NewTodoForm addTask={mockAddTask}/>);
+  // eslint-disable-next-line
+  const btn = queryByText("Add Task");
+  fireEvent.click(btn);
+  expect(mockAddTask).toHaveBeenCalled();
+})
 
-// })
 
