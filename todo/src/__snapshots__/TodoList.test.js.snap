@@ -13,6 +13,7 @@ exports[`matches snapshot 1`] = `
         Tasks
       </label>
       <input
+        id="name"
         name="name"
         placeholder="task name here"
         value=""

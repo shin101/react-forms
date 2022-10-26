@@ -27,6 +27,7 @@ const NewTodoForm = ({ addTask }) => {
       <label htmlFor="name">Tasks</label>
       <input 
       name="name" 
+      id="name"
       placeholder="task name here" 
       value={formData.name}
       onChange={handleChange}
