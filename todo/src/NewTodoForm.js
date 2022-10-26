@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { v4 as uuid } from "uuid";
 
 
 const NewTodoForm = ({ addTask }) => {
@@ -16,7 +17,7 @@ const NewTodoForm = ({ addTask }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTask({...formData});
+    addTask({...formData, id: uuid()});
     setFormData(initialState);
 
   }
