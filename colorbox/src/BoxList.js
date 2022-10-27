@@ -14,14 +14,30 @@ function BoxList(){
     setBoxes(boxes => [...boxes, newBox]);
   };
 
+  // delete a box
+  const remove = id => {
+    setBoxes(boxes => boxes.filter(box=> box.id !== id));
+  }
+
+
   return (
     <div>
       <h2>Color Box Maker</h2>
       <NewBoxForm addBox={addBox} />
-      {boxes.map(b => <Box {...b} />)}
+    <div>
+    {boxes.map(b => 
+      <Box 
+      width={b.width} 
+      height={b.height} 
+      bgColor={b.bgColor} 
+      id={b.id}
+      remove={remove} />)}
+    </div>
     </div>
   )
 }
+
+
 
 
 
