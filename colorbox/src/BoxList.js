@@ -1,73 +1,28 @@
 import React, { useState } from "react";
+import Box from "./Box"
+import NewBoxForm from "./NewBoxForm"
 
 
 // Place your state that contains all of the boxes here. This component should render all of the Box components along with the NewBoxForm component
 
-// const BoxList = () => {
-//   const [color, setColor] = useState("grey");
-//   return (
-//     <form>
-//       <Box />
-//     </form>
-//   )
-// }
 
-const NewBoxForm = () => {
-  const initialState = {
-    width: 100,
-    height: 100,
-    bgColor: 'white'
-  }
-  const [formData, setFormData] = useState(initialState)
-  const handleChange = e => {
-    const {name, value} = e.target;
-    setFormData(data => ({
-      ...data, 
-      [name]: value
-    }))
-  }
-  
+function BoxList(){
+  const [boxes, setBoxes] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const {width, height, bgColor} = formData;
-    setFormData(initialState);
-  }
-
+  // add a new box
+  const addBox = newBox => {
+    setBoxes(boxes => [...boxes, newBox]);
+  };
 
   return (
-    <form onSubmit = {handleSubmit}>
-      <label htmlFor="width"></label>
-      <input 
-      id="width" 
-      placeholder="width" 
-      name="width"
-      value={formData.width} 
-      onChange={handleChange}/>
-
-      <label htmlFor="height"></label>
-      <input 
-      id="height" 
-      placeholder="height" 
-      name="height"
-      value={formData.height} 
-      onChange={handleChange}/>
-      
-      <label htmlFor="bgColor"></label>
-      <input 
-      id="bgColor" 
-      placeholder="bgColor" 
-      name="bgColor"
-      value={formData.bgColor} 
-      onChange={handleChange}/>
-      
-
-      <button>Add a colorbox</button>
-    </form>
+    <div>
+      <h2>Color Box Maker</h2>
+      <NewBoxForm addBox={addBox} />
+      {boxes.map(b => <Box {...b} />)}
+    </div>
   )
 }
 
 
 
-
-export default NewBoxForm;
+export default BoxList;
